@@ -18,18 +18,6 @@
       # };
 
       config = {
-        pre-commit.settings.hookModule =
-          { config, ... }:
-          {
-            options.priority = lib.mkOption {
-              type = lib.types.int;
-              default = 0;
-              description = "Priority of the hook";
-            };
-
-            config.raw.priority = config.priority;
-          };
-
         # Some hooks cannot run in a build environment
         pre-commit.check.enable = false;
         pre-commit.settings.package = prek;

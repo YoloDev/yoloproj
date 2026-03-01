@@ -34,7 +34,7 @@
                 help = "run pre-commit hooks";
                 category = "lint";
                 command = ''
-                  ${prek}/bin/prek
+                  exec ${prek}/bin/prek $@
                 '';
               }
             ];

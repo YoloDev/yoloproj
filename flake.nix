@@ -25,6 +25,11 @@
       url = "path:./hooks";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    project = {
+      url = "path:./project";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -43,6 +48,7 @@
           oci = inputs.oci.mkFlakeModule importApply flakeModules;
           pkgs = inputs.pkgs.mkFlakeModule importApply flakeModules;
           hooks = inputs.hooks.mkFlakeModule importApply flakeModules;
+          project = inputs.project.mkFlakeModule importApply flakeModules;
         };
 
         defaultsModule =
@@ -52,6 +58,7 @@
               flakeModules.pkgs
               flakeModules.dev
               flakeModules.hooks
+              flakeModules.project
               inputs.flake-parts.flakeModules.flakeModules
             ];
 

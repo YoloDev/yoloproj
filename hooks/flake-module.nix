@@ -23,7 +23,6 @@
         pre-commit.settings.package = prek;
         pre-commit.settings.hooks = {
           flake-checker.enable = true;
-          nixfmt.enable = true;
         };
 
         devshells.default =

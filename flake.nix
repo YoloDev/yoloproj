@@ -81,6 +81,7 @@
           defaultsModule
         ];
 
+        flake.flakeModule = defaultsModule;
         flake.flakeModules = {
           # not part of defaults
           inherit (flakeModules) oci;
@@ -93,7 +94,6 @@
               imports = [
                 defaultsModule
                 module
-                flakeModules.dev
               ];
             };
         };

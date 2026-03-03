@@ -18,8 +18,6 @@
       # };
 
       config = {
-        # Some hooks cannot run in a build environment
-        pre-commit.check.enable = false;
         pre-commit.settings.package = prek;
         pre-commit.settings.hooks = {
           flake-checker.enable = true;

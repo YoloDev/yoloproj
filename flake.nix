@@ -81,6 +81,11 @@
           defaultsModule
         ];
 
+        flake.flakeModules = {
+          # not part of defaults
+          inherit (flakeModules) oci;
+        };
+
         flake.lib = {
           mkFlake =
             inputs: module:

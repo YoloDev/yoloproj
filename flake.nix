@@ -59,7 +59,6 @@
               flakeModules.dev
               flakeModules.hooks
               flakeModules.project
-              inputs.flake-parts.flakeModules.flakeModules
             ];
 
             systems = lib.mkDefault [
@@ -79,12 +78,14 @@
 
         imports = [
           defaultsModule
+          inputs.flake-parts.flakeModules.flakeModules
         ];
 
         flake.flakeModule = defaultsModule;
         flake.flakeModules = {
           # not part of defaults
           inherit (flakeModules) oci;
+          inherit (inputs.flake-parts.flakeModules) flakeModules;
         };
 
         flake.lib = {

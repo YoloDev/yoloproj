@@ -64,9 +64,9 @@ in
           settings.extraArgs = mkDefault "--all";
           settings.offline = mkDefault false;
 
-          package = mkDefault cfg.package;
-          packageOverrides.cargo = mkDefault cfg;
-          packageOverrides.clippy = mkDefault cfg;
+          package = cfg.package;
+          packageOverrides.cargo = cfg;
+          packageOverrides.clippy = cfg;
         };
 
         devshells.default =

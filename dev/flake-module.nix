@@ -12,7 +12,14 @@
       devshells.default =
         { pkgs, ... }:
         {
-          packages = [ pkgs.just ];
+          packages = [
+            # Task runner
+            pkgs.just
+
+            # Cli utils
+            pkgs.jq
+            pkgs.yq-go
+          ];
         };
     };
 }

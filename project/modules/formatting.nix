@@ -49,19 +49,25 @@
 
       mkCheckAllCommand =
         config:
-        mkAllCommand {
-          name = "${config.name}-check-all";
-          extensions = config.files.extensions;
-          command = getExeStr config.commands.check;
-        };
+        if !config.files.pass then
+          config.commands.check
+        else
+          mkAllCommand {
+            name = "${config.name}-check-all";
+            extensions = config.files.extensions;
+            command = getExeStr config.commands.check;
+          };
 
       mkFormatAllCommand =
         config:
-        mkAllCommand {
-          name = "${config.name}-format-all";
-          extensions = config.files.extensions;
-          command = getExeStr config.commands.format;
-        };
+        if !config.files.pass then
+          config.commands.format
+        else
+          mkAllCommand {
+            name = "${config.name}-format-all";
+            extensions = config.files.extensions;
+            command = getExeStr config.commands.format;
+          };
 
       commandType = lib.types.pathInStore;
 
@@ -105,6 +111,12 @@
               type = types.nullOr commandType;
               description = "The command to check all files in the project";
               default = if config.commands.check == null then null else (mkCheckAllCommand config);
+            };
+
+            files.pass = mkOption {
+              type = types.bool;
+              description = "Whether to pass the files to the formatter";
+              default = true;
             };
 
             files.extensions = mkOption {
@@ -205,7 +217,7 @@
                   enable = true;
                   name = name;
                   files = files;
-                  pass_filenames = true;
+                  pass_filenames = fmtCfg.files.pass;
                   entry = getExeStr fmtCfg.commands.format;
                 }
               ) enabledFormatters;

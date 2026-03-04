@@ -6,6 +6,8 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
+    flake-schemas.url = "github:DeterminateSystems/flake-schemas";
+
     oci = {
       url = "path:./oci";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,10 +32,18 @@
       url = "path:./project";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    rust = {
+      url = "path:./rust";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     inputs@{ flake-parts, ... }:
+    let
+      debug = false;
+    in
     flake-parts.lib.mkFlake { inherit inputs; } (
       { inputs, config, ... }:
       let
@@ -49,6 +59,7 @@
           pkgs = inputs.pkgs.mkFlakeModule importApply flakeModules;
           hooks = inputs.hooks.mkFlakeModule importApply flakeModules;
           project = inputs.project.mkFlakeModule importApply flakeModules;
+          rust = inputs.rust.mkFlakeModule importApply flakeModules;
         };
 
         defaultsModule =
@@ -66,6 +77,8 @@
               "aarch64-linux"
             ];
 
+            flake.schemas = lib.mkDefault inputs.flake-schemas.schemas;
+
             perSystem =
               { pkgs, ... }:
               {
@@ -74,7 +87,7 @@
           };
       in
       {
-        debug = true;
+        inherit debug;
 
         imports = [
           defaultsModule
@@ -84,7 +97,7 @@
         flake.flakeModule = defaultsModule;
         flake.flakeModules = {
           # not part of defaults
-          inherit (flakeModules) oci;
+          inherit (flakeModules) oci rust;
           inherit (inputs.flake-parts.flakeModules) flakeModules;
         };
 

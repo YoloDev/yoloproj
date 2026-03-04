@@ -6,6 +6,7 @@ let
     mkOption
     types
     mkIf
+    mkDefault
     ;
 
 in
@@ -50,22 +51,22 @@ in
 
         project.formatting.formatters.rustfmt = {
           inherit (cfg) package;
-          files.pass = false;
+          files.pass = mkDefault false;
           files.extensions.rs = true;
-          commands.format = "${fmtCfg.package}/bin/cargo-fmt fmt --all -- '--color=always'";
-          commands.check = "${fmtCfg.package}/bin/cargo-fmt fmt --check --all -- '--color=always'";
+          commands.format = mkDefault "${fmtCfg.package}/bin/cargo-fmt fmt --all -- '--color=always'";
+          commands.check = mkDefault "${fmtCfg.package}/bin/cargo-fmt fmt --check --all -- '--color=always'";
         };
 
         # TODO: use project.linters
         pre-commit.settings.hooks.clippy = {
-          enable = true;
-          settings.denyWarnings = true;
-          settings.extraArgs = "--all";
-          settings.offline = false;
+          enable = mkDefault true;
+          settings.denyWarnings = mkDefault true;
+          settings.extraArgs = mkDefault "--all";
+          settings.offline = mkDefault false;
 
-          package = cfg.package;
-          packageOverrides.cargo = cfg;
-          packageOverrides.clippy = cfg;
+          package = mkDefault cfg.package;
+          packageOverrides.cargo = mkDefault cfg;
+          packageOverrides.clippy = mkDefault cfg;
         };
 
         devshells.default =

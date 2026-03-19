@@ -5,11 +5,11 @@
   emptyDirectory,
 }:
 
-(buildDotnetGlobalTool {
+buildDotnetGlobalTool {
   pname = "glider";
-  version = "5.7.0";
+  version = "5.7.1";
 
-  nugetHash = "sha256-lGFNRB2JzB9MlGLvpKrST3d7Qcb2V/mGs74QZTPLGkQ=";
+  nugetHash = "sha256-5e+ZbZ5CegJHzSNO3BVAvFlKZ+gq1sMIW/StF1RmfEw=";
 
   dotnet-sdk = dotnetCorePackages.dotnet_10.sdk;
   dotnet-runtime = dotnetCorePackages.dotnet_10.runtime;
@@ -20,11 +20,4 @@
     platforms = lib.platforms.linux;
     mainProgram = "glider";
   };
-}).overrideAttrs
-  (
-    prev: # This makes nix-update find the correct file
-    {
-      inherit (prev) version;
-      src = emptyDirectory;
-    }
-  )
+}

@@ -149,7 +149,11 @@
             imports = [ ./packages ];
 
             devshells.default.packages = [
+              pkgs.bun
               pkgs.nix-update
+              pkgs.oxlint
+              pkgs.oxfmt
+              pkgs.nodejs
             ];
           };
       }

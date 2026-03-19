@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       t3:
-        specifier: 0.0.10
-        version: 0.0.10(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 0.0.11
+        version: 0.0.11(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 
 packages:
 
@@ -344,8 +344,8 @@ packages:
   stringify-entities@4.0.4:
     resolution: {integrity: sha512-IwfBptatlO+QCJUo19AqvrPNqlVMpW9YEL2LIVY+Rpv2qsjCGxaDLNRgeGsQWJhfItebuJhsGSLjaBbNSQ+ieg==}
 
-  t3@0.0.10:
-    resolution: {integrity: sha512-Mz4eK3WXkYp1lLwmWiZQhIr4xp5AJUd+Smqb9/9/y0LcYbjbQE6scUYs9E4rUJeTWQeuoM7s2gLJVlK6eSyQoA==}
+  t3@0.0.11:
+    resolution: {integrity: sha512-JQVwW3OnhU5uGegefRXcsn27xs7BHgNwGyhEyYpfPSmqsxPe9TPXvIcl0GTzACH+Rka6HbvIDLAjmM0NMAKzPw==}
     engines: {node: ^22.13 || ^23.4 || >=24.10}
     hasBin: true
 
@@ -771,7 +771,7 @@ snapshots:
       character-entities-html4: 2.1.0
       character-entities-legacy: 3.0.0
 
-  t3@0.0.10(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+  t3@0.0.11(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
     dependencies:
       '@effect/platform-node': https://pkg.pr.new/Effect-TS/effect-smol/@effect/platform-node@8881a9b(effect@https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b)(ioredis@5.10.0)
       '@effect/sql-sqlite-bun': https://pkg.pr.new/Effect-TS/effect-smol/@effect/sql-sqlite-bun@8881a9b(effect@https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b)

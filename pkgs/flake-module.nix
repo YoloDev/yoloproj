@@ -20,13 +20,18 @@ in
           default = [ ];
           description = "List of overlays to apply to the system pkgs.";
         };
+
+        pkgs.config.allowUnfree = mkOption {
+          type = types.bool;
+          default = true;
+          description = "Whether to allow unfree packages in the system pkgs.";
+        };
       };
 
       config = {
         _module.args.pkgs = import inputs.nixpkgs {
           inherit system;
-          inherit (cfg) overlays;
-          config = { };
+          inherit (cfg) overlays config;
         };
       };
     };

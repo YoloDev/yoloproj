@@ -2,9 +2,10 @@
   lib,
   buildDotnetGlobalTool,
   dotnetCorePackages,
+  emptyDirectory,
 }:
 
-buildDotnetGlobalTool {
+(buildDotnetGlobalTool {
   pname = "glider";
   version = "5.7.1";
 
@@ -19,4 +20,11 @@ buildDotnetGlobalTool {
     platforms = lib.platforms.linux;
     mainProgram = "glider";
   };
-}
+}).overrideAttrs
+  (
+    prev: # This makes nix-update find the correct file
+    {
+      inherit (prev) version;
+      src = emptyDirectory;
+    }
+  )

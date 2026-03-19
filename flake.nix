@@ -57,6 +57,11 @@
       url = "path:./rust";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-compat = {
+      url = "github:NixOS/flake-compat";
+      flake = false;
+    };
   };
 
   outputs =

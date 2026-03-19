@@ -17,6 +17,7 @@ in
 {
   packages = {
     glider = pkgs.callPackage ./glider { inherit buildDotnetGlobalTool; };
+    t3code = pkgs.callPackage ./t3code { };
   };
 
   apps = {

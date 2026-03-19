@@ -154,6 +154,7 @@
               pkgs.oxlint
               pkgs.oxfmt
               pkgs.nodejs
+              pkgs.pnpm_10
             ];
           };
       }

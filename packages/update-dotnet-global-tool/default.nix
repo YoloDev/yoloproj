@@ -14,9 +14,10 @@ writeShellApplication {
     nix-update
   ];
 
-  runtimeEnv.EVAL_PATH = ./eval.nix;
+  runtimeEnv.EVAL_PATH = "${./eval.nix}";
+  runtimeEnv.UPDATE_SCRIPT_PATH = "${./update.mts}";
 
   text = ''
-    bun ${./update.mts} "$@"
+    bun $UPDATE_SCRIPT_PATH "$@"
   '';
 }

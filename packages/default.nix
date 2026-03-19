@@ -1,7 +1,28 @@
-{ pkgs, inputs', ... }:
+{ pkgs, config, ... }:
+let
+  update-dotnet-global-tool = pkgs.callPackage ./update-dotnet-global-tool { };
+  update-packages = pkgs.callPackage ./update-packages { inherit (config) packages; };
+
+  buildDotnetGlobalTool =
+    args:
+    pkgs.buildDotnetGlobalTool (
+      args
+      // {
+        passthru = (args.passthru or { }) // {
+          update = update-dotnet-global-tool;
+        };
+      }
+    );
+in
 {
-  packages = rec {
-    update-dotnet-global-tool = pkgs.callPackage ./update-dotnet-global-tool { };
-    glider = pkgs.callPackage ./glider { };
+  packages = {
+    glider = pkgs.callPackage ./glider { inherit buildDotnetGlobalTool; };
+  };
+
+  apps = {
+    update-packages = {
+      type = "app";
+      program = pkgs.lib.getExe update-packages;
+    };
   };
 }

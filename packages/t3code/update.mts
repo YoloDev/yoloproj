@@ -1,4 +1,4 @@
-import { $, semver } from "bun";
+import { $ } from "bun";
 import { parseArgs } from "node:util";
 
 const { values } = parseArgs({
@@ -36,7 +36,5 @@ const latestVersion = await fetch(`https://registry.npmjs.org/t3/latest`)
 if (latestVersion !== t3.version) {
   console.log(`Updating t3 from ${t3.version} to ${latestVersion}`);
   await $`pnpm add t3@${latestVersion} --ignore-scripts`.cwd(`packages/${values.package}`);
-  console.log(
-    `nix-update --flake ${values.package} --version ${latestVersion} --override-filename "packages/${values.package}/default.nix"`,
-  );
+  await $`nix-update --flake ${values.package} --version ${latestVersion} --override-filename "packages/${values.package}/default.nix"`;
 }

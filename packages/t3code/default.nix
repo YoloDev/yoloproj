@@ -37,9 +37,9 @@ stdenv.mkDerivation (
   in
   {
     pname = "t3code";
-    version = "0.0.11";
+    version = "0.0.14";
 
-    depsHash = "sha256-wz0qOE/HEAMRCCkELYYXHrpvhT9KKrl7OUCOnhyolzs=";
+    depsHash = "sha256-vjGgR8cBhAWxAiIvcwC+V7t1Goxv3FRO+bZF5GPw3Qo=";
 
     buildInputs = [ stdenv.cc.cc ];
 

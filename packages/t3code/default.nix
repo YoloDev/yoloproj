@@ -103,6 +103,7 @@ stdenv.mkDerivation (
       description = "T3 Code is a minimal web GUI for coding agents";
       homepage = "https://github.com/pingdotgg/t3code";
       license = lib.licenses.mit;
+      platforms = lib.platforms.linux;
       mainProgram = "t3";
     };
   }

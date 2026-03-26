@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   update-dotnet-global-tool = pkgs.callPackage ./update-dotnet-global-tool { };
   update-packages = pkgs.callPackage ./update-packages { inherit (config) packages; };
@@ -13,12 +18,24 @@ let
         };
       }
     );
-in
-{
-  packages = {
+
+  unfilteredPackages = {
     glider = pkgs.callPackage ./glider { inherit buildDotnetGlobalTool; };
+    nuget-mcp-server = pkgs.callPackage ./nuget-mcp { inherit buildDotnetGlobalTool; };
     t3code = pkgs.callPackage ./t3code { };
   };
+
+  packages = lib.filterAttrs (
+    name: pkg:
+    let
+      system = pkgs.stdenv.hostPlatform.system;
+      platforms = pkg.meta.platforms or lib.platforms.all;
+    in
+    builtins.elem system platforms
+  ) unfilteredPackages;
+in
+{
+  inherit packages;
 
   apps = {
     update-packages = {

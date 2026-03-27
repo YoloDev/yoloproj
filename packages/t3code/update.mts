@@ -26,12 +26,20 @@ if (!values.package) {
 
 const pnpmList = await $`pnpm list --json --prod --no-optional --lockfile-only --long`
   .cwd(`packages/${values.package}`)
-  .json();
+  .json()
+  .catch((e) => {
+    console.error("Failed to get pnpm list:", e);
+    process.exit(1);
+  });
 
 const t3 = pnpmList[0].dependencies.t3;
 const latestVersion = await fetch(`https://registry.npmjs.org/t3/latest`)
   .then((res) => res.json())
-  .then((data: any) => data.version as string);
+  .then((data: any) => data.version as string)
+  .catch((e) => {
+    console.error("Failed to fetch latest t3 version:", e);
+    process.exit(1);
+  });
 
 if (latestVersion !== t3.version) {
   console.log(`Updating t3 from ${t3.version} to ${latestVersion}`);

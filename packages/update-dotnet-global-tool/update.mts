@@ -35,10 +35,10 @@ $.cwd(root);
 
 const pkgArg = `let flake = builtins.getFlake "${values.flake}"; in flake.packages.x86_64-linux.${values.package}`;
 const info = await $`nix eval --json --file ${EVAL_PATH} --arg pkg "${pkgArg}" info`.json();
-//console.log(info);
+// console.log(info);
 
 const packageInfo = await fetch(
-  `https://api.nuget.org/v3-flatcontainer/${info.nugetPackage}/index.json`,
+  `https://api.nuget.org/v3-flatcontainer/${info.nugetPackage.toLowerCase()}/index.json`,
 ).then((res) => res.json() as any);
 
 const versions = packageInfo.versions.filter((v: string) => !/-/.test(v)).sort(semver.order);

@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       t3:
-        specifier: 0.0.14
-        version: 0.0.14(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6)
+        specifier: 0.0.15
+        version: 0.0.15(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6)
 
 packages:
 
@@ -20,26 +20,23 @@ packages:
     peerDependencies:
       zod: ^4.0.0
 
-  '@effect/platform-node-shared@https://pkg.pr.new/Effect-TS/effect-smol/@effect/platform-node-shared@8881a9b606d84a6f5eb6615279138322984f5368':
-    resolution: {integrity: sha512-73FDHSTVLh/ZHeWrHFEbnCbjFE9gKi1YdJ9LEatDj0doZ8ouuTJW2BbqLDwMEfSf4zNQrxMEg+Jj/pb612HyWg==, tarball: https://pkg.pr.new/Effect-TS/effect-smol/@effect/platform-node-shared@8881a9b606d84a6f5eb6615279138322984f5368}
-    version: 4.0.0-beta.25
+  '@effect/platform-node-shared@4.0.0-beta.43':
+    resolution: {integrity: sha512-A9q0GEb61pYcQ06Dr6gXj1nKlDI3KHsar1sk3qb1ZY+kVSR64tBAylI8zGon23KY+NPtTUj/sEIToB7jc3Qt5w==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      effect: ^4.0.0-beta.25
+      effect: ^4.0.0-beta.43
 
-  '@effect/platform-node@https://pkg.pr.new/Effect-TS/effect-smol/@effect/platform-node@8881a9b':
-    resolution: {integrity: sha512-lOVb9aLpFnbkG4dWxY8lSTXihldd6kbcFI936X5UMvHz0HAYGrxsu1a+kHt/rYjiw1gjCmmnU6pE2pwKfO9erg==, tarball: https://pkg.pr.new/Effect-TS/effect-smol/@effect/platform-node@8881a9b}
-    version: 4.0.0-beta.25
+  '@effect/platform-node@4.0.0-beta.42':
+    resolution: {integrity: sha512-kbdRML2FBa4q8U8rZQcnmLKZ5zN/z1bAA7t5D1/UsBHZqJgnfRgu1CP6kaEfb1Nie6YyaWshxTktZQryjvW/Yg==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      effect: ^4.0.0-beta.25
+      effect: ^4.0.0-beta.42
       ioredis: ^5.7.0
 
-  '@effect/sql-sqlite-bun@https://pkg.pr.new/Effect-TS/effect-smol/@effect/sql-sqlite-bun@8881a9b':
-    resolution: {integrity: sha512-7Tcfkx/NfQILRHyO5c52I8NYrg6jBcxDAguTYx7tgbGHYU9WPQRGh/AkcRgQ+1fsUGjWdojSfd+WGb/r4ltYtQ==, tarball: https://pkg.pr.new/Effect-TS/effect-smol/@effect/sql-sqlite-bun@8881a9b}
-    version: 4.0.0-beta.25
+  '@effect/sql-sqlite-bun@4.0.0-beta.42':
+    resolution: {integrity: sha512-Ah2QfkeV+I9r5OBVJijSDnFXCv51giBXngSwhju5gefc0uWiM3G1tsYAqrNX24HlvFFEnOAZqNf/Sq1h4NqOAA==}
     peerDependencies:
-      effect: ^4.0.0-beta.25
+      effect: ^4.0.0-beta.42
 
   '@img/sharp-darwin-arm64@0.34.5':
     resolution: {integrity: sha512-imtQ3WMJXbMY4fxb/Ndp6HBTNVtWCUI0WdobyheGf5+ad6xX8VIDO8u2xE4qc/fr08CKG/7dDseFtn6M6g/r3w==}
@@ -278,9 +275,8 @@ packages:
     resolution: {integrity: sha512-qejHi7bcSD4hQAZE0tNAawRK1ZtafHDmMTMkrrIGgSLl7hTnQHmKCeB45xAcbfTqK2zowkM3j3bHt/4b/ARbYQ==}
     engines: {node: '>=0.3.1'}
 
-  effect@https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b:
-    resolution: {integrity: sha512-tZcsKgsLpQ5p1T5/duJHebWAqyG8owTuJdASj/2V+WPMuDlnB+uKvetMMXJsrNOyElUb3lVFeF2Mq00BbCnL9g==, tarball: https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b}
-    version: 4.0.0-beta.25
+  effect@4.0.0-beta.42:
+    resolution: {integrity: sha512-c1UrRP+tLzyHb4Fepl8XBDJlLQLkrcMXrRBba441GQRxMbeQ/aIOSFcBwSda1iMJ5l9F0lYc3Bhe33/whrmavQ==}
 
   fast-check@4.6.0:
     resolution: {integrity: sha512-h7H6Dm0Fy+H4ciQYFxFjXnXkzR2kr9Fb22c0UBpHnm59K2zpr2t13aPTHlltFiNT6zuxp6HMPAVVvgur4BLdpA==}
@@ -439,8 +435,8 @@ packages:
   stringify-entities@4.0.4:
     resolution: {integrity: sha512-IwfBptatlO+QCJUo19AqvrPNqlVMpW9YEL2LIVY+Rpv2qsjCGxaDLNRgeGsQWJhfItebuJhsGSLjaBbNSQ+ieg==}
 
-  t3@0.0.14:
-    resolution: {integrity: sha512-seOKy61/vr156ly57MI0KEvp/T3CoPG3RbJibEURtEAcu36azWJ6io8xhOmPo+PdUAsJFSxQ4gjZteWa5TQb9w==}
+  t3@0.0.15:
+    resolution: {integrity: sha512-um9NU50RQCziOEbNmP2SAoWemfJWfTgp/ikhxoG1CFwlEYfXvFLBNUizumXW2dHCW0JRBPHxbfiqjxwSqqf/lA==}
     engines: {node: ^22.16 || ^23.11 || >=24.10}
     hasBin: true
 
@@ -525,19 +521,19 @@ snapshots:
       '@img/sharp-win32-arm64': 0.34.5
       '@img/sharp-win32-x64': 0.34.5
 
-  '@effect/platform-node-shared@https://pkg.pr.new/Effect-TS/effect-smol/@effect/platform-node-shared@8881a9b606d84a6f5eb6615279138322984f5368(effect@https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b)':
+  '@effect/platform-node-shared@4.0.0-beta.43(effect@4.0.0-beta.42)':
     dependencies:
       '@types/ws': 8.18.1
-      effect: https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b
+      effect: 4.0.0-beta.42
       ws: 8.19.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@effect/platform-node@https://pkg.pr.new/Effect-TS/effect-smol/@effect/platform-node@8881a9b(effect@https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b)(ioredis@5.10.0)':
+  '@effect/platform-node@4.0.0-beta.42(effect@4.0.0-beta.42)(ioredis@5.10.0)':
     dependencies:
-      '@effect/platform-node-shared': https://pkg.pr.new/Effect-TS/effect-smol/@effect/platform-node-shared@8881a9b606d84a6f5eb6615279138322984f5368(effect@https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b)
-      effect: https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b
+      '@effect/platform-node-shared': 4.0.0-beta.43(effect@4.0.0-beta.42)
+      effect: 4.0.0-beta.42
       ioredis: 5.10.0
       mime: 4.1.0
       undici: 7.24.4
@@ -545,9 +541,9 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@effect/sql-sqlite-bun@https://pkg.pr.new/Effect-TS/effect-smol/@effect/sql-sqlite-bun@8881a9b(effect@https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b)':
+  '@effect/sql-sqlite-bun@4.0.0-beta.42(effect@4.0.0-beta.42)':
     dependencies:
-      effect: https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b
+      effect: 4.0.0-beta.42
 
   '@img/sharp-darwin-arm64@0.34.5':
     optionalDependencies:
@@ -744,7 +740,7 @@ snapshots:
 
   diff@8.0.3: {}
 
-  effect@https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b:
+  effect@4.0.0-beta.42:
     dependencies:
       '@standard-schema/spec': 1.1.0
       fast-check: 4.6.0
@@ -945,13 +941,13 @@ snapshots:
       character-entities-html4: 2.1.0
       character-entities-legacy: 3.0.0
 
-  t3@0.0.14(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6):
+  t3@0.0.15(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6):
     dependencies:
       '@anthropic-ai/claude-agent-sdk': 0.2.83(zod@4.3.6)
-      '@effect/platform-node': https://pkg.pr.new/Effect-TS/effect-smol/@effect/platform-node@8881a9b(effect@https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b)(ioredis@5.10.0)
-      '@effect/sql-sqlite-bun': https://pkg.pr.new/Effect-TS/effect-smol/@effect/sql-sqlite-bun@8881a9b(effect@https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b)
+      '@effect/platform-node': 4.0.0-beta.42(effect@4.0.0-beta.42)(ioredis@5.10.0)
+      '@effect/sql-sqlite-bun': 4.0.0-beta.42(effect@4.0.0-beta.42)
       '@pierre/diffs': 1.1.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      effect: https://pkg.pr.new/Effect-TS/effect-smol/effect@8881a9b
+      effect: 4.0.0-beta.42
       node-pty: 1.1.0
       open: 10.2.0
       ws: 8.19.0

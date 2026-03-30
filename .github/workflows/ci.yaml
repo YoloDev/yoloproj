@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ${{ matrix.runs-on }}
+    permissions:
+      contents: write
+      pull-requests: write
+
+    strategy:
+      matrix:
+        system: [x86_64-linux, aarch64-linux]
+        include:
+          - system: x86_64-linux
+            runs-on: ubuntu-24.04
+            arch: amd64
+          - system: aarch64-linux
+            runs-on: ubuntu-24.04-arm
+            arch: arm64
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+
+      - name: Set up Nix
+        uses: DeterminateSystems/determinate-nix-action@v3.17.1
+        with:
+          extra-conf: |
+            keep-env-derivations = true
+            keep-outputs = true
+
+      - name: Set up Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v13
+
+      - name: Run flake checker
+        uses: DeterminateSystems/flake-checker-action@v12
+
+      - name: Run flake checks
+        run: nix flake check --accept-flake-config
+
+    #   - name: Check the flake
+    #     run: nix flake check
+
+    #   - name: Create PR if there are changes
+    #     uses: peter-evans/create-pull-request@v8
+    #     with:
+    #       commit-message: "Update packages"
+    #       title: "Update packages"
+    #       body: "This PR updates the package versions and hashes."
+    #       branch: ci/update-packages

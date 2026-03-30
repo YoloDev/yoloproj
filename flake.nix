@@ -62,7 +62,7 @@
   outputs =
     inputs@{ flake-parts, ... }:
     let
-      debug = false;
+      debug = true;
     in
     flake-parts.lib.mkFlake { inherit inputs; } (
       {

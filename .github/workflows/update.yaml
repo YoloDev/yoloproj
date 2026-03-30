@@ -12,10 +12,10 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6.0.2
 
       - name: Set up Nix
-        uses: DeterminateSystems/determinate-nix-action@v3
+        uses: DeterminateSystems/determinate-nix-action@v3.17.1
 
       - name: Run update script
         run: nix run .#update-packages
@@ -24,7 +24,7 @@ jobs:
         run: nix flake check
 
       - name: Create PR if there are changes
-        uses: peter-evans/create-pull-request@v8
+        uses: peter-evans/create-pull-request@v8.1.0
         with:
           commit-message: "Update packages"
           title: "Update packages"

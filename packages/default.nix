@@ -33,9 +33,17 @@ let
     in
     builtins.elem system platforms
   ) unfilteredPackages;
+
+  checks = lib.mapAttrs' (name: value: {
+    inherit value;
+    name = "pkg-${name}";
+  }) packages;
 in
 {
-  inherit packages;
+  inherit
+    packages
+    checks
+    ;
 
   apps = {
     update-packages = {

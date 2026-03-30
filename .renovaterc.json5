@@ -7,4 +7,11 @@
   lockFileMaintenance: {
     enabled: true,
   },
+  enabledManagers: ["nix", "github-actions", "renovate-config-presets"],
+  packageRules: [
+    {
+      matchManagers: ["github-actions"],
+      pinDigests: true,
+    },
+  ],
 }

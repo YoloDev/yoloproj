@@ -45,14 +45,3 @@ jobs:
 
       - name: Run flake checks
         run: nix flake check --accept-flake-config
-
-    #   - name: Check the flake
-    #     run: nix flake check
-
-    #   - name: Create PR if there are changes
-    #     uses: peter-evans/create-pull-request@v8
-    #     with:
-    #       commit-message: "Update packages"
-    #       title: "Update packages"
-    #       body: "This PR updates the package versions and hashes."
-    #       branch: ci/update-packages

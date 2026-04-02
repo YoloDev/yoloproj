@@ -162,6 +162,12 @@
                     default = { };
                     description = "The ports to expose";
                   };
+
+                  labels = mkOption {
+                    type = types.lazyAttrsOf types.str;
+                    default = { };
+                    description = "The labels to apply";
+                  };
                 };
 
                 _dbg = mkOption {
@@ -188,6 +194,7 @@
 
                     config = lib.mergeAttrsList [
                       {
+                        labels = config.config.labels;
                         env = lib.mapAttrsToList (name: value: "${name}=${value}") config.config.env;
                         exposedPorts = lib.mapAttrs' (name: value: {
                           name = "${name}/${value}";

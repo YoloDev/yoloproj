@@ -156,6 +156,12 @@
                     default = { };
                     description = "The environment variables";
                   };
+
+                  ports = mkOption {
+                    type = types.lazyAttrsOf types.str;
+                    default = { };
+                    description = "The ports to expose";
+                  };
                 };
 
                 _dbg = mkOption {
@@ -183,6 +189,10 @@
                     config = lib.mergeAttrsList [
                       {
                         env = lib.mapAttrsToList (name: value: "${name}=${value}") config.config.env;
+                        exposedPorts = lib.mapAttrs' (name: value: {
+                          name = "${name}/${value}";
+                          value = { };
+                        }) config.config.ports;
                       }
 
                       (lib.optionalAttrs (config.config.cmd != null) {

@@ -40,43 +40,47 @@ jobs:
 
       - name: Generate PR title
         id: pr-title
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: |
-          DIFF=$(git diff --stat HEAD)
-          if [ -z "$DIFF" ]; then
-            echo "title=Update packages" >> "$GITHUB_OUTPUT"
-          else
-            PAYLOAD=$(jq -n --arg diff "$DIFF" '{
-              model: "gpt-4o-mini",
-              messages: [{
-                role: "user",
-                content: ("Summarize the following package file changes as a concise GitHub PR title. Start the title with \"Update\". Output only the title, no quotes, no punctuation at the end, max 72 characters.\n\n" + $diff)
-              }]
-            }')
-            RESPONSE=$(curl -s -X POST \
-              -H "Authorization: Bearer $GITHUB_TOKEN" \
-              -H "Content-Type: application/json" \
-              https://models.inference.ai.azure.com/chat/completions \
-              -d "$PAYLOAD")
-            ERROR=$(echo "$RESPONSE" | jq -r '.error.message // empty')
-            if [ -n "$ERROR" ]; then
-              echo "GitHub Models API error: $ERROR" >&2
-            fi
-            TITLE=$(echo "$RESPONSE" | jq -r '.choices[0].message.content // empty' | cut -c1-72 | sed 's/[[:punct:]]*$//')
-            if [ -z "$TITLE" ]; then
-              echo "title=Update packages" >> "$GITHUB_OUTPUT"
-            else
-              echo "title=$TITLE" >> "$GITHUB_OUTPUT"
-            fi
-          fi
+        with:
+          result-encoding: string
+          script: |
+            const { execSync } = require('child_process');
+            const diff = execSync('git diff --stat HEAD').toString().trim();
+            if (!diff) {
+              return 'Update packages';
+            }
+            const prompt =
+              'Summarize the following package file changes as a concise GitHub PR title. ' +
+              'Start the title with "Update". Output only the title, no quotes, no punctuation at the end, max 72 characters.\n\n' +
+              diff;
+            const response = await fetch('https://models.inference.ai.azure.com/chat/completions', {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                model: 'gpt-4o-mini',
+                messages: [{ role: 'user', content: prompt }],
+              }),
+            });
+            const data = await response.json();
+            const error = data?.error?.message;
+            if (error) {
+              core.error(`GitHub Models API error: ${error}`);
+              return 'Update packages';
+            }
+            const title = (data?.choices?.[0]?.message?.content ?? '').trim().slice(0, 72).replace(/[.!?;,]+$/, '');
+            return title || 'Update packages';
 
       - name: Create PR if there are changes
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
         with:
           token: ${{ steps.app-token.outputs.token }}
           commit-message: "Update packages"
-          title: ${{ steps.pr-title.outputs.title }}
+          title: ${{ steps.pr-title.outputs.result }}
           body: "This PR updates the package versions and hashes."
           branch: ci/update-packages
           labels: automerge

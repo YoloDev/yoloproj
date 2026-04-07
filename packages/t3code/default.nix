@@ -9,7 +9,6 @@
   gnumake,
   pkg-config,
   makeWrapper,
-  nodePackages,
   fetchPnpmDeps,
   pnpmConfigHook,
   fetchFromGitHub,
@@ -51,7 +50,6 @@ stdenv.mkDerivation (
       python3
       pkg-config
       gnumake
-      nodePackages.node-gyp
     ];
 
     env = {

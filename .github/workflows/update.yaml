@@ -10,6 +10,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      models: read
     steps:
       - name: Generate GitHub token
         uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
@@ -37,12 +38,45 @@ jobs:
       - name: Check the flake
         run: nix flake check --accept-flake-config
 
+      - name: Generate PR title
+        id: pr-title
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          DIFF=$(git diff --stat HEAD)
+          if [ -z "$DIFF" ]; then
+            echo "title=Update packages" >> "$GITHUB_OUTPUT"
+          else
+            PAYLOAD=$(jq -n --arg diff "$DIFF" '{
+              model: "gpt-4o-mini",
+              messages: [{
+                role: "user",
+                content: ("Summarize the following package file changes as a concise GitHub PR title. Start the title with \"Update\". Output only the title, no quotes, no punctuation at the end, max 72 characters.\n\n" + $diff)
+              }]
+            }')
+            RESPONSE=$(curl -s -X POST \
+              -H "Authorization: Bearer $GITHUB_TOKEN" \
+              -H "Content-Type: application/json" \
+              https://models.inference.ai.azure.com/chat/completions \
+              -d "$PAYLOAD")
+            ERROR=$(echo "$RESPONSE" | jq -r '.error.message // empty')
+            if [ -n "$ERROR" ]; then
+              echo "GitHub Models API error: $ERROR" >&2
+            fi
+            TITLE=$(echo "$RESPONSE" | jq -r '.choices[0].message.content // empty' | cut -c1-72 | sed 's/[[:punct:]]*$//')
+            if [ -z "$TITLE" ]; then
+              echo "title=Update packages" >> "$GITHUB_OUTPUT"
+            else
+              echo "title=$TITLE" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+
       - name: Create PR if there are changes
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
         with:
           token: ${{ steps.app-token.outputs.token }}
           commit-message: "Update packages"
-          title: "Update packages"
+          title: ${{ steps.pr-title.outputs.title }}
           body: "This PR updates the package versions and hashes."
           branch: ci/update-packages
           labels: automerge

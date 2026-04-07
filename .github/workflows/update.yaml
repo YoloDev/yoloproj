@@ -52,8 +52,8 @@ jobs:
               return 'Update packages';
             }
             const prompt =
-              'Summarize the following package file changes as a concise GitHub PR title. ' +
-              'Start the title with "Update". Output only the title, no quotes, no punctuation at the end, max 72 characters.\n\n' +
+              'Summarize the following package file changes as a concise GitHub PR title. Focus on version changes. Example, "Update xxx to version yyy, and zzz to version aaa".' +
+              'Do not ascribe intent to the changes. Start the title with "Update". Output only the title, no quotes, no punctuation at the end, max 72 characters.\n\n' +
               diff;
             const response = await fetch('https://models.inference.ai.azure.com/chat/completions', {
               method: 'POST',

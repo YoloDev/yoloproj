@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       t3:
-        specifier: 0.0.15
-        version: 0.0.15(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6)
+        specifier: 0.0.17
+        version: 0.0.17(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6)
 
 packages:
 
@@ -20,23 +20,28 @@ packages:
     peerDependencies:
       zod: ^4.0.0
 
-  '@effect/platform-node-shared@4.0.0-beta.43':
-    resolution: {integrity: sha512-A9q0GEb61pYcQ06Dr6gXj1nKlDI3KHsar1sk3qb1ZY+kVSR64tBAylI8zGon23KY+NPtTUj/sEIToB7jc3Qt5w==}
-    engines: {node: '>=18.0.0'}
+  '@effect/platform-bun@4.0.0-beta.45':
+    resolution: {integrity: sha512-dZsbkJ+o4JfKE1OIAlMq8YWhmEfXxtTYennYADK/M/XlOtkFLsc2jkZppDvMznVni6JpFxWc7wd5rUf8jBVP5g==}
     peerDependencies:
-      effect: ^4.0.0-beta.43
+      effect: ^4.0.0-beta.45
 
-  '@effect/platform-node@4.0.0-beta.42':
-    resolution: {integrity: sha512-kbdRML2FBa4q8U8rZQcnmLKZ5zN/z1bAA7t5D1/UsBHZqJgnfRgu1CP6kaEfb1Nie6YyaWshxTktZQryjvW/Yg==}
+  '@effect/platform-node-shared@4.0.0-beta.46':
+    resolution: {integrity: sha512-Yzci82XbZ1W3tuiownsJawrJZTGeTrTZKLD0uxdBWCBzlVyqDwoSwRwO5qh33DurJj9B7iS8MDf14fpGRBPNGQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      effect: ^4.0.0-beta.42
+      effect: ^4.0.0-beta.46
+
+  '@effect/platform-node@4.0.0-beta.45':
+    resolution: {integrity: sha512-P07NMG4eoy62iLX9szak0hkr7hrwgq5+XMkm7URVug/3zqfZVxEG2kxn9JzVK1lF5WbaVrEKwjt3IkEJxzSPtg==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      effect: ^4.0.0-beta.45
       ioredis: ^5.7.0
 
-  '@effect/sql-sqlite-bun@4.0.0-beta.42':
-    resolution: {integrity: sha512-Ah2QfkeV+I9r5OBVJijSDnFXCv51giBXngSwhju5gefc0uWiM3G1tsYAqrNX24HlvFFEnOAZqNf/Sq1h4NqOAA==}
+  '@effect/sql-sqlite-bun@4.0.0-beta.45':
+    resolution: {integrity: sha512-sJBBztwI4YxjdjhdyjWelh3KKoZucmmZS2ONeNDIzYgqFlsrwEEUrhVkWf5ch9Io+kUUzeb6q7/SedFoLUWO7g==}
     peerDependencies:
-      effect: ^4.0.0-beta.42
+      effect: ^4.0.0-beta.45
 
   '@img/sharp-darwin-arm64@0.34.5':
     resolution: {integrity: sha512-imtQ3WMJXbMY4fxb/Ndp6HBTNVtWCUI0WdobyheGf5+ad6xX8VIDO8u2xE4qc/fr08CKG/7dDseFtn6M6g/r3w==}
@@ -285,8 +290,8 @@ packages:
     resolution: {integrity: sha512-qejHi7bcSD4hQAZE0tNAawRK1ZtafHDmMTMkrrIGgSLl7hTnQHmKCeB45xAcbfTqK2zowkM3j3bHt/4b/ARbYQ==}
     engines: {node: '>=0.3.1'}
 
-  effect@4.0.0-beta.42:
-    resolution: {integrity: sha512-c1UrRP+tLzyHb4Fepl8XBDJlLQLkrcMXrRBba441GQRxMbeQ/aIOSFcBwSda1iMJ5l9F0lYc3Bhe33/whrmavQ==}
+  effect@4.0.0-beta.45:
+    resolution: {integrity: sha512-vvNrUWqnzBIW1hRMa+zw0CLRW6HLgdu7hQ6K7PT/rS+UY/73Ma11O+Oi9oc9zwL8KcN37M47UDseAdlF0bGNWw==}
 
   fast-check@4.6.0:
     resolution: {integrity: sha512-h7H6Dm0Fy+H4ciQYFxFjXnXkzR2kr9Fb22c0UBpHnm59K2zpr2t13aPTHlltFiNT6zuxp6HMPAVVvgur4BLdpA==}
@@ -445,8 +450,8 @@ packages:
   stringify-entities@4.0.4:
     resolution: {integrity: sha512-IwfBptatlO+QCJUo19AqvrPNqlVMpW9YEL2LIVY+Rpv2qsjCGxaDLNRgeGsQWJhfItebuJhsGSLjaBbNSQ+ieg==}
 
-  t3@0.0.15:
-    resolution: {integrity: sha512-um9NU50RQCziOEbNmP2SAoWemfJWfTgp/ikhxoG1CFwlEYfXvFLBNUizumXW2dHCW0JRBPHxbfiqjxwSqqf/lA==}
+  t3@0.0.17:
+    resolution: {integrity: sha512-Qs8VDTYEjIMVNgYqnwkMalVoj7TeFxspwGmWe3c39btAQ2xxZp8bg+/kwKKvovQdxUUMuc5rgUK5B4EcX5rx2w==}
     engines: {node: ^22.16 || ^23.11 || >=24.10}
     hasBin: true
 
@@ -531,19 +536,27 @@ snapshots:
       '@img/sharp-win32-arm64': 0.34.5
       '@img/sharp-win32-x64': 0.34.5
 
-  '@effect/platform-node-shared@4.0.0-beta.43(effect@4.0.0-beta.42)':
+  '@effect/platform-bun@4.0.0-beta.45(effect@4.0.0-beta.45)':
+    dependencies:
+      '@effect/platform-node-shared': 4.0.0-beta.46(effect@4.0.0-beta.45)
+      effect: 4.0.0-beta.45
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  '@effect/platform-node-shared@4.0.0-beta.46(effect@4.0.0-beta.45)':
     dependencies:
       '@types/ws': 8.18.1
-      effect: 4.0.0-beta.42
+      effect: 4.0.0-beta.45
       ws: 8.19.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@effect/platform-node@4.0.0-beta.42(effect@4.0.0-beta.42)(ioredis@5.10.0)':
+  '@effect/platform-node@4.0.0-beta.45(effect@4.0.0-beta.45)(ioredis@5.10.0)':
     dependencies:
-      '@effect/platform-node-shared': 4.0.0-beta.43(effect@4.0.0-beta.42)
-      effect: 4.0.0-beta.42
+      '@effect/platform-node-shared': 4.0.0-beta.46(effect@4.0.0-beta.45)
+      effect: 4.0.0-beta.45
       ioredis: 5.10.0
       mime: 4.1.0
       undici: 7.24.4
@@ -551,9 +564,9 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@effect/sql-sqlite-bun@4.0.0-beta.42(effect@4.0.0-beta.42)':
+  '@effect/sql-sqlite-bun@4.0.0-beta.45(effect@4.0.0-beta.45)':
     dependencies:
-      effect: 4.0.0-beta.42
+      effect: 4.0.0-beta.45
 
   '@img/sharp-darwin-arm64@0.34.5':
     optionalDependencies:
@@ -750,7 +763,7 @@ snapshots:
 
   diff@8.0.3: {}
 
-  effect@4.0.0-beta.42:
+  effect@4.0.0-beta.45:
     dependencies:
       '@standard-schema/spec': 1.1.0
       fast-check: 4.6.0
@@ -951,16 +964,16 @@ snapshots:
       character-entities-html4: 2.1.0
       character-entities-legacy: 3.0.0
 
-  t3@0.0.15(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6):
+  t3@0.0.17(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6):
     dependencies:
       '@anthropic-ai/claude-agent-sdk': 0.2.83(zod@4.3.6)
-      '@effect/platform-node': 4.0.0-beta.42(effect@4.0.0-beta.42)(ioredis@5.10.0)
-      '@effect/sql-sqlite-bun': 4.0.0-beta.42(effect@4.0.0-beta.42)
+      '@effect/platform-bun': 4.0.0-beta.45(effect@4.0.0-beta.45)
+      '@effect/platform-node': 4.0.0-beta.45(effect@4.0.0-beta.45)(ioredis@5.10.0)
+      '@effect/sql-sqlite-bun': 4.0.0-beta.45(effect@4.0.0-beta.45)
       '@pierre/diffs': 1.1.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      effect: 4.0.0-beta.42
+      effect: 4.0.0-beta.45
       node-pty: 1.1.0
       open: 10.2.0
-      ws: 8.19.0
     transitivePeerDependencies:
       - bufferutil
       - ioredis

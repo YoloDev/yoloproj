@@ -20,6 +20,7 @@ let
     );
 
   unfilteredPackages = {
+    dotnet-verify = pkgs.callPackage ./dotnet-verify { inherit buildDotnetGlobalTool; };
     glider = pkgs.callPackage ./glider { inherit buildDotnetGlobalTool; };
     nuget-mcp-server = pkgs.callPackage ./nuget-mcp { inherit buildDotnetGlobalTool; };
     t3code = pkgs.callPackage ./t3code { };

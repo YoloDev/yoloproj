@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       t3:
-        specifier: 0.0.18
-        version: 0.0.18(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6)
+        specifier: 0.0.20
+        version: 0.0.20(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6)
 
 packages:
 
@@ -789,8 +789,8 @@ packages:
   stringify-entities@4.0.4:
     resolution: {integrity: sha512-IwfBptatlO+QCJUo19AqvrPNqlVMpW9YEL2LIVY+Rpv2qsjCGxaDLNRgeGsQWJhfItebuJhsGSLjaBbNSQ+ieg==}
 
-  t3@0.0.18:
-    resolution: {integrity: sha512-gJoanVblrRDo27sAGjwW3au/ema+8oQkAGGBkTQdBPXSNI20bfxngwYlT2HOS3THJgVye5nbYvJRKsEJPoAdZw==}
+  t3@0.0.20:
+    resolution: {integrity: sha512-EJFWEJyM76YO6Jpuu9y9rZZqnEGOk70OzkGvjw2OZLCmy5spcT7bB1Wfgk7jO+RT5gSxiwWN/xmmFD+acuoBEg==}
     engines: {node: ^22.16 || ^23.11 || >=24.10}
     hasBin: true
 
@@ -1714,7 +1714,7 @@ snapshots:
       character-entities-html4: 2.1.0
       character-entities-legacy: 3.0.0
 
-  t3@0.0.18(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6):
+  t3@0.0.20(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6):
     dependencies:
       '@anthropic-ai/claude-agent-sdk': 0.2.112(zod@4.3.6)
       '@effect/platform-bun': 4.0.0-beta.45(effect@4.0.0-beta.45)

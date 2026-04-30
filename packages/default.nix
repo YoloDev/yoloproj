@@ -25,6 +25,7 @@ let
     nuget-mcp-server = pkgs.callPackage ./nuget-mcp { inherit buildDotnetGlobalTool; };
     t3code = pkgs.callPackage ./t3code { };
     op-direnv = pkgs.callPackage ./op-direnv { };
+    gitbutler-cli = pkgs.callPackage ./gitbutler-cli { };
   };
 
   packages = lib.filterAttrs (

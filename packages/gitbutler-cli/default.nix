@@ -9,7 +9,8 @@
   git,
   glib,
   dbus,
-  stdenv,
+  nix-update-script,
+  ...
 }:
 
 let
@@ -21,16 +22,16 @@ let
 in
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "gitbutler-cli";
-  version = "0.19.7";
+  version = "0.19.10";
 
   src = fetchFromGitHub {
     owner = "gitbutlerapp";
     repo = "gitbutler";
     tag = "release/${finalAttrs.version}";
-    hash = "sha256-ppl1noikPwTvG/XT7iYG41+9ZZO8i0x2L+odeEzRP1s=";
+    hash = "sha256-qcpeJxpuUOX1T04FzURlsPHQ0gUA46GYgkENriXjhv4=";
   };
 
-  cargoHash = "sha256-xW/eO+AQQUBN2MrixNx3LKhwMookkKuX5LF4DSWQKKY=";
+  cargoHash = "sha256-lzAimBIwYXlwAVALUThiihUoT6nT7P8ufH12TYPRHnk=";
 
   nativeBuildInputs = [
     cmake # Required by `zlib-sys` crate
@@ -52,6 +53,15 @@ rustPlatform.buildRustPackage (finalAttrs: {
   env = {
     OPENSSL_NO_VENDOR = true;
     LIBGIT2_NO_VENDOR = 1;
+  };
+
+  passthru = {
+    update = nix-update-script {
+      extraArgs = [
+        "--version-regex"
+        "release/(.*)"
+      ];
+    };
   };
 
   meta = {

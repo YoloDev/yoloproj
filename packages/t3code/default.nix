@@ -1,6 +1,5 @@
 {
   lib,
-  gcc,
   pkgs,
   stdenv,
   nodejs,
@@ -11,7 +10,7 @@
   makeWrapper,
   fetchPnpmDeps,
   pnpmConfigHook,
-  fetchFromGitHub,
+  ...
 }:
 
 stdenv.mkDerivation (

@@ -4,6 +4,7 @@
   nix,
   writeShellApplication,
   packages,
+  ...
 }:
 let
   packagesWithUpdate = lib.filter (pkg: pkg.update != null) (
@@ -13,9 +14,25 @@ let
     }) packages
   );
 
+  mkUpdatePackage =
+    name: pkg:
+    let
+      package =
+        if builtins.isList pkg then
+          writeShellApplication {
+            name = "update-${name}";
+
+            text = builtins.unsafeDiscardStringContext (lib.strings.escapeShellArgs (pkg ++ [ name ]));
+          }
+        else
+          pkg;
+
+    in
+    lib.getExe package;
+
   scriptUpdateInput = lib.map (pkg: {
     inherit (pkg) name;
-    update = lib.getExe pkg.update;
+    update = mkUpdatePackage pkg.name pkg.update;
   }) packagesWithUpdate;
 in
 writeShellApplication {

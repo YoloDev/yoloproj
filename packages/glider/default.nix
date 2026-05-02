@@ -2,6 +2,7 @@
   lib,
   buildDotnetGlobalTool,
   dotnetCorePackages,
+  ...
 }:
 
 buildDotnetGlobalTool {

@@ -3,6 +3,7 @@
   nix,
   nix-update,
   writeShellApplication,
+  ...
 }:
 
 writeShellApplication {

@@ -22,7 +22,7 @@ let
   unfilteredPackages = {
     dotnet-verify = pkgs.callPackage ./dotnet-verify { inherit buildDotnetGlobalTool; };
     glider = pkgs.callPackage ./glider { inherit buildDotnetGlobalTool; };
-    nuget-mcp-server = pkgs.callPackage ./nuget-mcp { inherit buildDotnetGlobalTool; };
+    nuget-mcp-server = pkgs.callPackage ./nuget-mcp-server { inherit buildDotnetGlobalTool; };
     t3code = pkgs.callPackage ./t3code { };
     op-direnv = pkgs.callPackage ./op-direnv { };
     gitbutler-cli = pkgs.callPackage ./gitbutler-cli { };

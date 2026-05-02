@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       t3:
-        specifier: 0.0.20
-        version: 0.0.20(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6)
+        specifier: 0.0.21
+        version: 0.0.21(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6)
 
 packages:
 
@@ -203,6 +203,9 @@ packages:
     resolution: {integrity: sha512-x0fWaQtYp4E6sktbsdAqnehxDgEc/VwM7uLsRCYWaiGu0ykYdZPiS8zCWdnjHwyiumousxfBm4SO31eXqwEZhQ==}
     cpu: [x64]
     os: [win32]
+
+  '@opencode-ai/sdk@1.14.32':
+    resolution: {integrity: sha512-XAJAojk05x9VMg66Un5NakwiShyQYpFRhNE4uIUTwIh1jrHdLV0hh5Xrxp5Icc1amM76TvK7F6XlvofZZDjl9g==}
 
   '@pierre/diffs@1.1.1':
     resolution: {integrity: sha512-YJUUdYuRGN2r+rU/alMf9LEm5S6INDIOajxqJaiLpo1swDsebzsQ+UrNgfc1IspDPWkl0d62KWzt1IfUFqJBrg==}
@@ -789,8 +792,8 @@ packages:
   stringify-entities@4.0.4:
     resolution: {integrity: sha512-IwfBptatlO+QCJUo19AqvrPNqlVMpW9YEL2LIVY+Rpv2qsjCGxaDLNRgeGsQWJhfItebuJhsGSLjaBbNSQ+ieg==}
 
-  t3@0.0.20:
-    resolution: {integrity: sha512-EJFWEJyM76YO6Jpuu9y9rZZqnEGOk70OzkGvjw2OZLCmy5spcT7bB1Wfgk7jO+RT5gSxiwWN/xmmFD+acuoBEg==}
+  t3@0.0.21:
+    resolution: {integrity: sha512-QymuBY/8rDRy2FwZtRzB4QDeTEMuNLMgRwRdM/6zu6QUMf4kt2z166HfvyOMaQyr4NZ9bFtceaWBso+1UsO8xw==}
     engines: {node: ^22.16 || ^23.11 || >=24.10}
     hasBin: true
 
@@ -1059,6 +1062,10 @@ snapshots:
 
   '@msgpackr-extract/msgpackr-extract-win32-x64@3.0.3':
     optional: true
+
+  '@opencode-ai/sdk@1.14.32':
+    dependencies:
+      cross-spawn: 7.0.6
 
   '@pierre/diffs@1.1.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
@@ -1714,12 +1721,13 @@ snapshots:
       character-entities-html4: 2.1.0
       character-entities-legacy: 3.0.0
 
-  t3@0.0.20(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6):
+  t3@0.0.21(ioredis@5.10.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(zod@4.3.6):
     dependencies:
       '@anthropic-ai/claude-agent-sdk': 0.2.112(zod@4.3.6)
       '@effect/platform-bun': 4.0.0-beta.45(effect@4.0.0-beta.45)
       '@effect/platform-node': 4.0.0-beta.45(effect@4.0.0-beta.45)(ioredis@5.10.0)
       '@effect/sql-sqlite-bun': 4.0.0-beta.45(effect@4.0.0-beta.45)
+      '@opencode-ai/sdk': 1.14.32
       '@pierre/diffs': 1.1.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       effect: 4.0.0-beta.45
       node-pty: 1.1.0

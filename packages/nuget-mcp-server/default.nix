@@ -6,10 +6,10 @@
 
 buildDotnetGlobalTool {
   pname = "NuGet.Mcp.Server";
-  version = "1.2.3";
+  version = "1.4.1";
 
   nugetName = "NuGet.Mcp.Server.linux-x64";
-  nugetHash = "sha256-fjeayo54xZue5u/ZeuIOcqeZgar849Jz/pszreVGiQk=";
+  nugetHash = "sha256-NDn/b8L2nW6QJNn8qfGA1hwU35jHy72BRPrqBgICvFw=";
   executables = [ "nuget-mcp-server" ];
 
   dotnet-sdk = dotnetCorePackages.dotnet_10.sdk;

@@ -28,10 +28,10 @@ rustPlatform.buildRustPackage (finalAttrs: {
     owner = "gitbutlerapp";
     repo = "gitbutler";
     tag = "release/${finalAttrs.version}";
-    hash = "sha256-qcpeJxpuUOX1T04FzURlsPHQ0gUA46GYgkENriXjhv4=";
+    hash = "sha256-s4ZLwWWkfreNX6pDIz3LoSBTCLV5hOyHujw4DVpI08k=";
   };
 
-  cargoHash = "sha256-lzAimBIwYXlwAVALUThiihUoT6nT7P8ufH12TYPRHnk=";
+  cargoHash = "sha256-SRo8Eiv6fZVF5Y8vghNUBdnPvKK/IkirJRqvj26iTko=";
 
   nativeBuildInputs = [
     cmake # Required by `zlib-sys` crate

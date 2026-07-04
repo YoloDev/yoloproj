@@ -250,7 +250,8 @@
 
         packages =
           let
-            mkImagePackage = image:
+            mkImagePackage =
+              image:
               let
                 registriesConf = pkgs.writeText "registries.conf" ''
                   unqualified-search-registries = ["docker.io", "quay.io"]

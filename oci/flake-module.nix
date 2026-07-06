@@ -250,20 +250,27 @@
 
         packages =
           let
-            mkImagePackage = image: {
-              "oci-${image.name}-spec-json" = image._out;
-              "oci-${image.name}-copy" = pkgs.writeShellApplication {
-                name = "copy-${image.name}";
-
-                runtimeInputs = [
-                  pkgs.skopeo-nix2container
-                ];
-
-                text = ''
-                  skopeo --insecure-policy copy --format oci "nix:${image._out}" "$1"
+            mkImagePackage =
+              image:
+              let
+                registriesConf = pkgs.writeText "registries.conf" ''
+                  unqualified-search-registries = ["docker.io", "quay.io"]
                 '';
+              in
+              {
+                "oci-${image.name}-spec-json" = image._out;
+                "oci-${image.name}-copy" = pkgs.writeShellApplication {
+                  name = "copy-${image.name}";
+
+                  runtimeInputs = [
+                    pkgs.skopeo-nix2container
+                  ];
+
+                  text = ''
+                    skopeo --insecure-policy --registries-conf ${registriesConf} copy --format oci "nix:${image._out}" "$1"
+                  '';
+                };
               };
-            };
 
             images = lib.concatMapAttrs (name: image: mkImagePackage image) cfg.images;
           in
